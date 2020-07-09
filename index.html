@@ -16,11 +16,16 @@
 }
 
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 600px) {
   html, body {
       font-size: 0.7em;
       /* overflow:hidden; */
 
+    }
+    button {
+      width: 5em;
+      height: 3em;
+      flex-shrink: 1;
     }
     img {
       height: 20px;
@@ -127,6 +132,7 @@ img {
 }
 button {
   display: flex;
+  flex-shrink: 1;
   justify-content: flex-end;
   align-items: center;
   width:37em;
@@ -144,7 +150,7 @@ button {
 }
 #header 
 {
-flex-shrink: 1em;
+flex-shrink: 1;
 display: flex;
 justify-content: center;
 flex-wrap: nowrap;
@@ -200,7 +206,7 @@ color: rgb(225, 225, 227);
               <i class="fas fa-user-circle"></i>
             </span>
           </div>
-           <div class='logo' id="logo"><img src="https://static.appdb.to/images/cydia-1900000630-icon.png" height="30px" width="30px">kinopub</div>
+           <div class='logo' id="logo"><img src="https://static.appdb.to/images/cydia-1900000630-icon.png" height="40px" width="40px">kinopub</div>
            
           <div class="menu"> 
             <div class="navbar">
