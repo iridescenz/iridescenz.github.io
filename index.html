@@ -1,434 +1,699 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <style> 
-          html, body {
-  height: 100%;
-  font-size: 10px;
-  box-sizing: border-box;
-  font-size: 10px;
-  font-weight: 550;
-  width: 100%;
-  margin: 0px;
-  background-color: rgb(28, 32, 43);
-  color: rgb(177, 177, 177);
-  font-family: 'Roboto', sans-serif;
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Irina Portfolio Website</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <!-- Update these with your own fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <style>
+            *,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
+/* Custom Properties, update these for your own design */
 
-@media all and (max-width: 600px) {
-  html, body {
-      font-size: 0.7em;
-      /* overflow:hidden; */
+:root {
+    font-family: 'Source Sans Pro', sans-serif, 'Source Code Pro', monospace;
+    
+    --fw-reg: 300;
+    --fw-bold: 900;
+    
+    --clr-light: #fff;
+    --clr-dark: #1a1919;
+    --clr-accent: #ffc0cb;
+    
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+    
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+          0.125em 0.125em 0.25em rgba(0,0,0,.15);
+}
 
+@media (min-width: 800px) {
+    :root {
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.125rem;
     }
-    button {
-      width: 5em;
-      height: 3em;
-      flex-shrink: 1;
-    }
-    img {
-      height: 20px;
-      width: 20px;
-      border-radius: 5px;
-    }
-}
-@media all and (min-width: 2000px) {
-  html, body {
-      font-size: 1.4em;
-  }
-  img {
-    height: 50px;
-    width: 50px;
-    border-radius: 10px;
-  }
-
-    }
-
-
-.navbar {
-  line-height: 2.4em;
-  margin-left: -3em;
-  margin-top: -1em;
-  margin-bottom: auto;
-  flex: 1;
-}
-ul > li {
-  list-style-type: none;
-}
-.container {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat((12, 1fr), minmax(150px, 1fr)); 
-  grid-auto-rows: 6em auto; 
-  grid-template-areas: 
-      " l h h h h h h h h h h h "
-      " m c c c c c c c c c c c "      
 }
 
-.xs-text {
-  font-size: 0.7em;
-  margin-left: -0.5em!important;
+
+
+body {
+    background:  no-repeat center, 10%, url('/Users/iri/Desktop/design/3.jpeg');
+    color: var(--clr-dark);
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
 }
 
-.nav-text {
-  margin-left: 1em;;
+section {
+    padding: 5em 2em;
 }
-.nav-icon {
- padding-left: -1em;
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+strong { font-weight: var(--fw-bold) }
+
+:focus {
+    outline: 3px solid var(--clr-accent);
+    outline-offset: 3px;
+}
+
+/* Buttons */
+
+.btn {
+    display: inline-block;
+    padding: .5em 2.5em;
+    background: var(--clr-accent);
+    color: var(--clr-dark);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: var(--fw-bold);
+    transition: transform 200ms ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* Typography */
+
+h1,
+h2,
+h3 {
+    line-height: 1;
+    margin: 0;
+}
+
+h1 { font-size: var(--fs-h1) }
+h2 { font-size: var(--fs-h2) }
+h3 { font-size: var(--fs-h3) }
+
+
+.section__title {
+    margin-bottom: .25em;
+}
+
+.section__title--intro {
+    font-weight: var(--fw-reg);
+    background-color: white;
+    opacity: 0.9;
+    color: black;
+}
+
+.section__title--intro strong {
+    display: block;
+}
+li.nav__item {
+    background-color: white;
+    opacity: 0.9;
+    color: black;
+}
+.section__subtitle {
+    margin: 0;
+    font-size: var(--fs-h3);
+}
+
+.section__subtitle--intro,
+.section__subtitle--about {
+    background: var(--clr-accent);
+    padding: .25em 1em;
+    font-family: var(--ff-secondary);
+    margin-bottom: 1em;
+}
+
+.section__subtitle--work {
+    color: var(--clr-accent);
+    font-weight: var(--fw-bold);
+    margin-bottom: 2em;
+}
+
+/* header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
 }
 
 .logo {
-  grid-area: l;
-  background-color: rgb(23, 26, 35);
- }
-
- #logo {
-  font-size: 2em;
-  padding-left: 1em;
-  font-weight: 700;
-  padding-top: 0.5em;
-  color: rgb(225, 225, 227)
-  
- }
-.header {
-  grid-area: h;
-
+    max-width: 100px;
 }
 
-.menu {
-  grid-area: m;
-  background-color: rgb(23, 26, 35);
-  padding-left: 1em;
-  height: 100%;
+.nav {
+    position: fixed;
+    background: url('/Users/iri/Desktop/design/5.jpeg');
+    background-repeat: no-repeat;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    
+    transform: translateX(100%);
+    transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
 }
 
-.content {
-  grid-area: c;
+.nav__list {
+    list-style: none;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__link {
+    color: inherit;
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-h2);
+    text-decoration: none;
+}
+
+.nav__link:hover {
+    color: var(--clr-accent);
+}
+
+.nav-toggle {
+    padding: .5em;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 1000;
+}
+
+.nav-open .nav {
+    transform: translateX(0);
+}
+
+.nav-open .nav-toggle {
+    position: fixed;
+}
+
+.nav-open .hamburger {
+    transform: rotate(.625turn);
+}
+
+.nav-open .hamburger::before {
+    transform: rotate(90deg) translateX(-6px);
+}
+
+.nav-open .hamburger::after {
+    opacity: 0;
+}
+
+
+
+
+
+
+.hamburger {
+    display: block;
+    position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    background: var(--clr-accent);
+    width: 2em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+}
+
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.hamburger::before { top: 6px; }
+.hamburger::after { bottom: 6px; }
+
+
+/*  Intro section  */
+
+.intro {
+    position: relative;
+}
+
+.intro__img {
+    box-shadow: var(--bs);
+}
+
+.section__subtitle--intro {
+    display: inline-block;
+}
+
+@media (min-width: 600px) {
+    .intro {
+        display: grid;
+        width: min-content;
+        margin: 0 auto;
+        grid-column-gap: 1em;
+        grid-template-areas: 
+            "img title"
+            "img subtitle";
+        grid-template-columns: min-content max-content;
+    }
+    
+    .intro__img {
+        grid-area: img;
+        min-width: 250px;
+        position: relative;
+        z-index: 2;
+    }    
+    
+    .section__subtitle--intro {
+        align-self: start;
+        grid-column: -1 / 1;
+        grid-row: 2;
+        text-align: right;
+        position: relative;
+        left: -1.5em;
+        width: calc(100% + 1.5em);
+    }
+}
+
+
+
+/*  My services section  */
+
+.my-services {
+    background-color: var(--clr-dark);
+ 
+    background-size: cover;
+    /* background-blend-mode: multiply; */
+    color: var(--clr-light);
+    text-align: center;
+}
+
+.section__title--services {
+    color: var(--clr-accent);
+    position: relative;
+}
+
+.section__title--services::after {
+    content: '';
+    display: block;
+    width: 2em;
+    height: 1px;
+    margin: 0.5em auto 1em;
+    background: var(--clr-light);
+    opacity: 0.25;
+}
+
+.services {
+    margin-bottom: 4em;
+}
+
+.service {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+    .services {
+        display: flex;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .service + .service {
+        margin-left: 2em;
+    }
+}
+
+
+.about-me {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-me__img {
+    box-shadow: var(--bs);
+}
+
+@media (min-width: 600px) {
+    .about-me {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        grid-template-areas: 
+            "title img"
+            "subtitle img"
+            "text img";
+        grid-column-gap: 2em;
+    }
+    
+    .section__title--about {
+        grid-area: title;
+    }
+    
+    .section__subtitle--about {
+        grid-column: 1/ -1;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 2em);
+        padding-left: 1em;
+        padding-right: calc(200px + 4em);
+    }
+    
+    .about-me__img {
+        grid-area: img;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* My Work */
+
+.my-work {
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+    text-align: center;    
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.portfolio__item {
+    background: var(--clr-accent);
+    overflow: hidden;
+}
+
+.portfolio__img {
+    transition: 
+        transform 750ms cubic-bezier(.5, 0, .5, 1),
+        opacity 250ms linear;
+}
+
+.portfolio__item:focus {
+    position: relative;
+    z-index: 2;
+}
+
+.portfolio__img:hover,
+.portfolio__item:focus .portfolio__img {
+    transform: scale(1.2);
+    opacity: .5;
+}
+
+
+/* footer */
+
+.footer {
+    background: #111;
+    color: var(--clr-accent);
+    text-align: center;
+    padding: 2.5em 0;
+    font-size: var(--fs-h3);
 
 }
 
-.container > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4em;
-}
-ul > li:hover:not(:first-child):not(:nth-child(9)):not(:nth-child(19)) {
-  background-color:rgb(112, 112, 112);
-  border-radius: 3px;
-  opacity: 1;
-  cursor: pointer;
+.footer a { 
+    color: inherit;
+    text-decoration: none;
 }
 
-.container > div:nth-child(4n) {
-  background-color:rgb(28, 32, 43);
-}
-img {
-  border-radius: 1em;
-  margin-right: 0.5em;
-  margin-left: -3em;
-}
-button {
-  display: flex;
-  flex-shrink: 1;
-  justify-content: flex-end;
-  align-items: center;
-  width:37em;
-  height: 3em;
-  color: aliceblue;
-  background-color: rgb(56, 60, 72);
-  border: 0.1em solid rgb(69, 74, 86);
-  text-align: center;
- -moz-appearance: none;
- -webkit-appearance: none;
-  appearance:none;
-  font-size: 1em;
-  margin-left: 1em;
-
-}
-#header 
-{
-flex-shrink: 1;
-display: flex;
-justify-content: center;
-flex-wrap: nowrap;
-align-items: center;
-background-color: rgb(33, 38, 51);
+.footer__link {
+    font-weight: var(--fw-bold);
 }
 
-.days {
-  margin-left: auto;
-  background-color: rgb(67, 68, 73);
-  border-radius: 4px;
-  color: beige;
-  padding: 5px;
-  text-align: center;
-  margin-right: 1em;
-  font-weight: 200;
+.footer__link:hover,
+.social-list__link:hover {
+    opacity: .7;
 }
-.fa-user-circle{
-  margin-right: 1.5em;
-  font-size: 1.5em;
+
+.footer__link:hover {
+    text-decoration: underline;
 }
-input[type='text'] {
-  background-color: inherit;
-  -moz-appearance: none;
--webkit-appearance: none;
-outline: none;
-appearance:none;
-font-size: 1em;
-margin-right: auto;
-background-color: rgb(56, 60, 72);
-height: 2em;
-width: 35em;
-padding-left: 1em;
-border: 1px solid rgb(56, 60, 72);
-color: rgb(225, 225, 227);
+
+.social-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 2em 0 0;
+    padding: 0;
 }
+
+.social-list__item {
+    margin: 0 .5em;
+}
+
+.social-list__link {
+    padding: .5em;
+}
+
+
+/* Individual portfolio item styles */
+
+.portfolio-item-individual{
+    padding: 0 2em 2em;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.portfolio-item-individual p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer {
+    background: rgb(255, 255, 255);
+    color: #ffc0cb; ;
+    text-align: center;
+    padding: 2.5em 0;
+    font-size: var(--fs-h3);
+
+}
+
+.footer a { 
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer__link {
+    font-weight: var(--fw-bold);
+}
+
+.footer__link:hover,
+.social-list__link:hover {
+    opacity: .7;
+}
+
+.footer__link:hover {
+    text-decoration: underline;
+}
+
+.social-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 2em 0 0;
+    padding: 0;
+}
+
+.social-list__item {
+    margin: 0 .5em;
+}
+
+.social-list__link {
+    padding: .5em;
+}
+
+.social-list__item:hover{
+    font-size:2em;
+    transition: ease-out 500ms, color 1s;
+    color: black;
+    opacity: 1;
+  }
         </style>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-        <script src="https://kit.fontawesome.com/ca9a7cf365.js" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
     </head>
     <body>
-        <div class="container">
-          <div class="header" id="header">
-            <button type="text" class="submit button">
-              <input type="text" placeholder="Название или имя... ">
-            <i class="fas fa-search"></i>
+        <header>
+            <div class="logo">
+              
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
             </button>
-            <span class="days">90 дн.</span>
-            <span class="user-icon">
-              <i class="fas fa-user-circle"></i>
-            </span>
-          </div>
-           <div class='logo' id="logo"><img src="https://static.appdb.to/images/cydia-1900000630-icon.png" height="40px" width="40px">kinopub</div>
-           
-          <div class="menu"> 
-            <div class="navbar">
-              <nav id="aside-bar">
-                <ul>
-                  <li>
-                    <a>
-                      <span class="xs-text nav-text">Библиотека</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <span class="nav-icon">
-                        <i class="fas fa-folder-plus"></i>
-                      </span>
-                      <span class="nav-text">Новинки</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <span class="nav-icon">
-                        <i class="fas fa-tv"></i>
-                      </span>
-                      <span class="nav-text">Сериалы</span>
-                    </a>
-                  </li>
-                <li>
-                  <a>
-                    <span class="nav-icon">
-                      <i class="fas fa-film"></i>
-                    </span>
-                    <span class="nav-text">Фильмы</span>
-                  </a>
-                </li>
-               <li>
-                <a>
-                  <span class="nav-icon">
-                    <i class="fas fa-music"></i>
-                  </span>
-                  <span class="nav-text">Концерты</span>
-                </a>
-              </li>
-            <li>
-              <a>
-                <span class="nav-icon">
-                  <i class="fas fa-video"></i>
-                </span>
-                <span class="nav-text">Докуфильмы</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span class="nav-icon">
-                  <i class="fas fa-camera-retro"></i>
-                </span>
-                <span class="nav-text">ТВ Шоу</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span class="nav-icon">
-                  <i class="far fa-futbol"></i>
-                </span>
-                <span class="nav-text">Спорт</span>
-              </a>
-            </li>
-            <li>
-            <a>
-              <span class="xs-text nav-text">Остальное</span>
-            </a>
-          </li>
-          <li>
-          <a>
-            <span class="nav-icon">
-              <i class="fas fa-bell"></i>
-            </span>
-            <span class="nav-text">Я смотрю</span>
-          </a>
-        </li>
-        <li>
-            <a>
-              <span class="nav-icon">
-                <i class="fas fa-bookmark"></i>
-              </span>
-              <span class="nav-text">Закладки</span>
-            </a>
-          </li>
-          <li>
-            <a>
-                <span class="nav-icon">
-                  <i class="fas fa-history"></i>
-                </span>
-                <span class="nav-text">История</span>
-              </a>
-            </li>
-            <li>
-            <a>
-                <span class="nav-icon">
-                  <i class="fas fa-exclamation-circle"></i>
-                </span>
-                <span class="nav-text">Новые эпизоды</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                  <span class="nav-icon">
-                    <i class="fas fa-list"></i>
-                  </span>
-                  <span class="nav-text">Подборки</span>
-                </a>
-              </li>
-              <li>
-                <a>
-                    <span class="nav-icon">
-                      <i class="fas fa-trophy"></i>
-                    </span>
-                    <span class="nav-text">Награды</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                      <span class="nav-icon">
-                        <i class="fas fa-comments"></i>
-                      </span>
-                      <span class="nav-text">Киноблог</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                        <span class="nav-icon">
-                          <i class="fas fa-plug"></i>
-                        </span>
-                        <span class="nav-text">Приставки</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                          <span class="nav-icon">
-                            <i class="fas fa-ruble-sign"></i>
-                          </span>
-                          <span class="nav-text">Продлить Pro</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <span class="xs-text nav-text">Контакты</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                            <span class="nav-icon">
-                              <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="nav-text">Почта</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                              <span class="nav-icon">
-                                <i class="fab fa-telegram-plane"></i>
-                              </span>
-                              <span class="nav-text">Telegram</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a>
-                                <span class="nav-icon">
-                                  <i class="fas fa-tachometer-alt"></i>
-                                </span>
-                                <span class="nav-text">Спидтест</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a>
-                               <span class="nav-icon">
-                               <i class="fas fa-wifi"></i>
-                              </span>
-                           <span class="nav-text">Статус сайта</span>
-                        </a>
-                   </li>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    
+                    <li class="nav__item"><a href="#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
                 </ul>
-              </nav>
-            </div>   
-          </div>
-          <div class="content">
-            <h1>CONTENT</h1>
-          </div>
-      </div>   
-      <script>
+            </nav>
+        </header>
+        
+        <!-- Introduction -->
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                Hi, I am <strong>Irina Turenko</strong>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">front-end dev</p>
+            <img src="/Users/iri/Desktop/фит/IMAGE 2020-07-11 17:43:16.jpg" alt="a picture of Irina" class="intro__img">
+        </section>
+        
+        
+        <!-- My services -->
+        <section class="my-services" id="services">
+            <h2 class="section__title section__title--services">What I do</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Design + Development</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div> <!-- / service -->
+                
+                <div class="service">
+                    <h3>E-Commerce</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div> <!-- / service -->
+                
+                <div class="service">
+                    <h3>WordPress</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div> <!-- / service -->
+            </div> <!-- / services -->
+            
+            <a href="#work" class="btn">My Work</a>
+        </section>
+        
+        
+        <!-- About me -->
+        <section class="about-me" id="about">
+           <h2 class="section__title section__title--about">Who I am</h2>
+           <p class="section__subtitle section__subtitle--about">Designer & developer based out of NYC</p>
+           
+           <div class="about-me__body">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+           </div>
+           
+        </section>
+        
+        <!-- My Work -->
+        <section class="my-work" id="work">
+            <h2 class="section__title section__title--work">My work</h2>
+            <p class="section__subtitle section__subtitle--work">A selection of my range of work</p>
+            
+            <div class="portfolio">
+                <!-- Portfolio item 01 -->
+                <a href="#" class="portfolio__item">
+                    <img src="/Users/iri/Desktop/design/8.jpeg" alt="" class="portfolio__img">
+                </a>
+                
+                <!-- Portfolio item 02 -->
+                <a href="#" class="portfolio__item">
+                    <img src="/Users/iri/Desktop/design/1.jpeg" alt="" class="portfolio__img">
+                </a>
+                
+                <!-- Portfolio item 03 -->
+                <a href="#" class="portfolio__item">
+                    <img src="/Users/iri/Desktop/design/2.jpeg" alt="" class="portfolio__img">
+                </a>
+                
+                <!-- Portfolio item 04 -->
+                <a href="#" class="portfolio__item">
+                    <img src="/Users/iri/Desktop/design/3.jpeg" alt="" class="portfolio__img">
+                </a>
+                
+                <!-- Portfolio item 05 -->
+                <a href="#" class="portfolio__item">
+                    <img src="/Users/iri/Desktop/design/4.jpeg" alt="" class="portfolio__img">
+                </a>
+                
+                <!-- Portfolio item 06 -->
+                <a href="#" class="portfolio__item">
+                    <img src="/Users/iri/Desktop/design/5.jpeg" alt="" class="portfolio__img">
+                </a>
+                
+                <!-- Portfolio item 07 -->
+                <a href="#" class="portfolio__item">
+                    <img src="/Users/iri/Desktop/design/12.jpeg" alt="" class="portfolio__img">
+                </a>
+                
+                <!-- Portfolio item 08 -->
+                <a href="#" class="portfolio__item">
+                    <img src="/Users/iri/Desktop/design/14.jpeg" alt="" class="portfolio__img">
+               
+            </div>
+        </section>
+        
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" href="mailto:tirenko7irina@mail.ru?subject=Приглашение на интервью">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://wa.me/79777866763/">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="tg://resolve?domain=iridescenz">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://github.com/iridescenz">
+                        <i class="fab fa-github"></i>
+                    </a>
+                      
+                    
+                </li>
+            </ul>
+        </footer>
+        <script>
+            const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelectorAll('.nav__link')
 
-var button = document.querySelector('button')
-var h1 = document.querySelector('h1')
-var input = document.querySelector('input')
-var knopks = document.querySelectorAll('.nav-text:not(.xs-text)')
+navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+});
 
-
-function buttonHandler() {
-  h1.textContent = 'Результат для ' + input.value
-}
-for (var knopk of knopks)
-knopk.addEventListener('mouseenter', function() {
-   this.style.color = 'rgb(28, 32, 43)'
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+    })
 })
-for (var knopk of knopks)
-knopk.addEventListener('mouseleave', function() {
-  this.style.color = 'rgb(177, 177, 177)'
-  
-})
-
-// background-color => backgroundColor
-
-h1.addEventListener('mouseenter', function() {
-  this.style.color = 'pink'
-})
-
-h1.addEventListener('mouseleave', function() {
-  this.style.color = 'rgb(177, 177, 177)'
-  
-})
-
-button.addEventListener('click', buttonHandler)
-
-</script>
+    
+        </script>
     </body>
 </html>
